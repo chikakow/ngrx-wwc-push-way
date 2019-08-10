@@ -5,7 +5,11 @@
   "projects": {
     "ngrx-wwc-push-way": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@ngrx/schematics:component": {
+          "styleext": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -120,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngrx-wwc-push-way"
+    }
+  },
+  "defaultProject": "ngrx-wwc-push-way",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
