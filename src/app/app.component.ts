@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { User } from './models/user.model';
@@ -10,10 +10,15 @@ import { Store } from '@ngrx/store';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'ngrx-wwc-push-way';
 
   constructor(private store: Store<UserReducer.State>, public dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.store.dispatch(UserActions.loadUsers());
+  }
 
   openModal(event) {
     event.preventDefault();

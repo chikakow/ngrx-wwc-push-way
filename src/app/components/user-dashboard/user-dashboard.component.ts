@@ -26,7 +26,7 @@ export class UserDashboardComponent implements OnInit {
     this.advanceStudents$ = this.store.pipe(select(UserSelectors.selectAdvanceStudents));
   }
   ngOnInit() {
-    this.store.dispatch(UserActions.loadUsers());
+    // this.store.dispatch(UserActions.loadUsers());
   }
 
   isStudent(user: User): string {
