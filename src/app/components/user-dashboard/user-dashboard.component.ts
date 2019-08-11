@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 import { Store, select } from '@ngrx/store';
-import { UserReducer, UserSelectors, UserActions } from '../store';
+import { UserReducer, UserSelectors, UserActions } from '../../store';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddStudentComponent } from '../add-student/add-student.component';
 

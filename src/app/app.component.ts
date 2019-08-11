@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddStudentComponent } from './add-student/add-student.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 import { User } from './models/user.model';
 import { UserActions, UserReducer } from './store';
 import { Store } from '@ngrx/store';

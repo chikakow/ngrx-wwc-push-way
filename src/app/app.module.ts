@@ -12,9 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { reducers, metaReducers } from './store/reducers';
 import { AppEffects } from './store/effects/app.effects';
 import { UserEffects } from './store/effects/user/user.effects';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { EditAdvanceStudentsComponent } from './edit-advance-students/edit-advance-students.component';
-import { AddStudentComponent } from './add-student/add-student.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { EditAdvanceStudentsComponent } from './components/edit-advance-students/edit-advance-students.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
