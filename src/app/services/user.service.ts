@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,5 +17,9 @@ export class UserService {
                     return new User(copy);
                 });
             }));
+    }
+
+    addStudent(student: User): Observable<boolean> {
+        return of(true).pipe(delay(200));
     }
 }

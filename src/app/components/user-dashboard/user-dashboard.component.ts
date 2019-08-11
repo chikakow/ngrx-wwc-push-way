@@ -13,6 +13,7 @@ import { AddStudentComponent } from '../add-student/add-student.component';
 })
 export class UserDashboardComponent implements OnInit {
 
+  // Faucets of streams 🚰
   users$: Observable<User[]>;
   studentUsers$: Observable<User[]>;
   advanceStudents$: Observable<User[]>;
@@ -26,7 +27,7 @@ export class UserDashboardComponent implements OnInit {
     this.advanceStudents$ = this.store.pipe(select(UserSelectors.selectAdvanceStudents));
   }
   ngOnInit() {
-    // this.store.dispatch(UserActions.loadUsers());
+    
   }
 
   isStudent(user: User): string {

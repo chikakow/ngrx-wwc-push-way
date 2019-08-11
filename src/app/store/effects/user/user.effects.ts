@@ -28,4 +28,22 @@ export class UserEffects {
     )
   ));
 
+  addStudent$ = createEffect(() => this.actions$.pipe(
+    ofType(UserActions.addStudent),
+    switchMap((action) =>
+      this.userService.addStudent(action.student).pipe(
+        map((result) => {
+          if (result) {
+            return UserApiActions.addStudentSuccess({ student: action.student });
+          } else {
+            return UserApiActions.addStudentFailure({ error: 'Something went wrong' });
+          }
+        }),
+        catchError(error =>
+          of(UserApiActions.addStudentFailure({ error }))
+        )
+      )
+    )
+  ));
+
 }

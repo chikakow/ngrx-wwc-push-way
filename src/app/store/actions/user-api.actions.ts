@@ -10,3 +10,13 @@ export const loadUsersFailure = createAction(
     '[User/API] Load Users Failure',
     props<{ error: any }>()
 );
+
+export const addStudentSuccess = createAction(
+    '[User/API] Add Student Success',
+    props<{ student: User }>()
+);
+
+export const addStudentFailure = createAction(
+    '[User/API] Add Student Failure',
+    props<{ error: any }>()
+);
