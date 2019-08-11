@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { Store, select } from '@ngrx/store';
 import { UserReducer, UserSelectors, UserActions } from '../store';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AddStudentComponent } from '../add-student/add-student.component';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -14,7 +15,7 @@ export class UserDashboardComponent implements OnInit {
 
   users$: Observable<User[]>;
   studentUsers$: Observable<User[]>;
-  advanceStudents$: Observable<User[]>; 
+  advanceStudents$: Observable<User[]>;
 
   // We are not going to need this anymore.
   // subscriptions: Subscription[];
@@ -28,8 +29,8 @@ export class UserDashboardComponent implements OnInit {
     this.store.dispatch(UserActions.loadUsers());
   }
 
-  onSaveStudentUser(user: User) {
-    // this.store.dispatch(new UserActions.CreateStudent(user));
+  isStudent(user: User): string {
+    return user.isStudent ? user.isAdvanceStudent ? 'Advance Student' : 'Student' : 'Regular User';
   }
 
 }

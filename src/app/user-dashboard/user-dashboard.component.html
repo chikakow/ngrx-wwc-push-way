@@ -1,1 +1,46 @@
-<p>user-dashboard works!</p>
+<div class="mt-5">
+
+    <div class="flex flex-wrap mb-20">
+        <div class="w-1/4 ml-auto p-6">
+            <h2 class="text-teal-600 font-bold mb-4">Users</h2>
+            <div class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll" *ngIf="users$ | async as users">
+                <div class="py-2 text-sm text-grey-400 flex" *ngFor="let user of users">
+                    <div class="w-2/3">
+                        {{ user.firstName }} {{ user.lastName }}
+                    </div>
+                    <div class="w-1/3">
+                        {{ isStudent(user) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/4  p-6">
+            <h2 class="text-teal-600 font-bold mb-4">Students</h2>
+            <div class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll"
+                *ngIf="studentUsers$ | async as users">
+                <div class="py-2 text-sm text-grey-400 flex" *ngFor="let user of users">
+                    <div class="w-2/3">
+                        {{ user.firstName }} {{ user.lastName }}
+                    </div>
+                    <div class="w-1/3">
+                        {{ isStudent(user) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/4 mr-auto  p-6">
+            <h2 class="text-teal-600 font-bold mb-4">Advance Students</h2>
+            <div class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll"
+                *ngIf="advanceStudents$ | async as users">
+                <div class="py-2 text-sm text-grey-400 flex" *ngFor="let user of users">
+                    <div class="w-2/3">
+                        {{ user.firstName }} {{ user.lastName }}
+                    </div>
+                    <div class="w-1/3">
+                        {{ isStudent(user) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

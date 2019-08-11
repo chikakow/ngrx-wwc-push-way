@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,17 +14,22 @@ import { AppEffects } from './store/effects/app.effects';
 import { UserEffects } from './store/effects/user/user.effects';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EditAdvanceStudentsComponent } from './edit-advance-students/edit-advance-students.component';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
-    EditAdvanceStudentsComponent
+    EditAdvanceStudentsComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    MatDialogModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -35,6 +41,7 @@ import { EditAdvanceStudentsComponent } from './edit-advance-students/edit-advan
     StoreDevtoolsModule.instrument()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddStudentComponent]
 })
 export class AppModule { }
