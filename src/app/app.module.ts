@@ -18,6 +18,7 @@ import { AddStudentComponent } from './components/add-student/add-student.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    DragDropModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

@@ -14,3 +14,8 @@ export const selectAdvanceStudents = createSelector(
     selectStudents,
     (students) => students.filter(s => s.isAdvanceStudent)
 )
+
+export const selectRegularStudents = createSelector(
+    selectStudents,
+    (students) => students.filter(s => !s.isAdvanceStudent && s.isStudent)
+)

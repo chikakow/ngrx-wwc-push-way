@@ -1,1 +1,81 @@
-<p>edit-advance-students works!</p>
+<!-- <div class="mt-5">
+
+        <div class="flex flex-wrap mb-20">
+            <div class="w-1/4 ml-auto p-6">
+                <h2 class="text-teal-600 font-bold mb-4">Users</h2>
+                <div 
+                cdkDropList
+                #regularList="cdkDropList"
+                [cdkDropListData]="studentUsers$ | async"
+                [cdkDropListConnectedTo]="[advanceList]"
+                (cdkDropListDropped)="drop($event)"
+                class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll" >
+                    <div class="py-2 text-sm text-grey-400 flex" *ngFor="let user of studentUsers$ | async">
+                        <div class="w-2/3">
+                            {{ user.firstName }} {{ user.lastName }}
+                        </div>
+                        <div class="w-1/3">
+                            {{ isStudent(user) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/4 mr-auto p-6">
+                <h2 class="text-teal-600 font-bold mb-4">Students</h2>
+                <div 
+                cdkDropList
+                #advanceList="cdkDropList"
+                [cdkDropListData]="advanceStudents$ | async"
+                [cdkDropListConnectedTo]="[regularList]"
+                (cdkDropListDropped)="drop($event)"
+                class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll">
+                    <div class="py-2 text-sm text-grey-400 flex" *ngFor="let user of advanceStudents$ | async">
+                        <div class="w-2/3">
+                            {{ user.firstName }} {{ user.lastName }}
+                        </div>
+                        <div class="w-1/3">
+                            {{ isStudent(user) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<div class="mt-5 flex flex-wrap mb-20">
+    <div class="w-1/3 ml-auto p-6">
+        <h2 class="text-teal-600 font-bold mb-4">Regular Student</h2>
+
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="studentUsers$ | async"
+            [cdkDropListConnectedTo]="[doneList]" class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll"
+            (cdkDropListDropped)="drop($event)">
+            <div class="py-4 border-grey-100 border-b text-md text-grey-400 flex cursor-pointer bg-white"
+                *ngFor="let user of studentUsers$ | async" cdkDrag>
+                <div class="w-2/3">
+                    {{ user.firstName }} {{ user.lastName }}
+                </div>
+                <div class="w-1/3">
+                    {{ isStudent(user) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-1/3 mr-auto p-6">
+        <h2 class="text-teal-600 font-bold mb-4">Advance Student</h2>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="advanceStudents$ | async"
+            [cdkDropListConnectedTo]="[todoList]" class="rounded border border-teal-600 p-4 h-64 overflow-y-scroll"
+            (cdkDropListDropped)="drop($event)">
+            <div class="py-4 border-grey-100 border-b text-md text-grey-400 flex cursor-pointer bg-white"
+                *ngFor="let user of advanceStudents$ | async" cdkDrag>
+                <div class="w-2/3">
+                    {{ user.firstName }} {{ user.lastName }}
+                </div>
+                <div class="w-1/3">
+                    {{ isStudent(user) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

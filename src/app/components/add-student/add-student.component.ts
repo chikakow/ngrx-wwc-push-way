@@ -34,8 +34,6 @@ export class AddStudentComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  isStudent(user: User): string {
-    return user.isStudent ? user.isAdvanceStudent ? 'Advance Student' : 'Student' : 'Regular User';
-  }
+
 
 }
