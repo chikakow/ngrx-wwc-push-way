@@ -18,7 +18,7 @@ export class AppComponent {
   openModal(event) {
     event.preventDefault();
     const dialogRef = this.dialog.open(AddStudentComponent, {
-      width: '300px'
+      width: '500px'
     }
 
     )
@@ -28,6 +28,9 @@ export class AppComponent {
   }
 
   onSaveStudentUser(student: User) {
-    this.store.dispatch(UserActions.addStudent({ student }));
+    if (student) {
+
+      this.store.dispatch(UserActions.addStudent({ student }));
+    }
   }
 }

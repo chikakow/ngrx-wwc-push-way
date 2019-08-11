@@ -36,7 +36,12 @@ export const reducer = createReducer(
     loadError: error,
     loading: false,
     loaded: false
-  })))
+  })),
+  on(UserActions.addStudent, (state, {student}) => ({
+    ...state,
+    users: [student, ...state.users]
+  }))
+  )
 
   export const getLoaded = (state: State) => state.loaded;
   export const getLoading = (state: State) => state.loading;

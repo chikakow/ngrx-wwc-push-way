@@ -10,17 +10,32 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AddStudentComponent implements OnInit {
 
   student = new User();
+  studentType = 'user';
 
-  constructor( public dialogRef: MatDialogRef<AddStudentComponent>,) {
-    
-    this.student.isStudent = true;
+  constructor(public dialogRef: MatDialogRef<AddStudentComponent>, ) {
+
+    this.student.firstName = 'Steve';
+    this.student.lastName = 'Harrington';
+    this.student.joinedOn = new Date();
+
   }
 
   ngOnInit() {
   }
-  
+
+
+  save() {
+    this.student.isStudent = this.studentType === 'student' || this.studentType === 'advance';
+    this.student.isAdvanceStudent = this.studentType === 'advance';
+    this.dialogRef.close(this.student);
+  }
+
   onNoClick() {
     this.dialogRef.close();
+  }
+
+  isStudent(user: User): string {
+    return user.isStudent ? user.isAdvanceStudent ? 'Advance Student' : 'Student' : 'Regular User';
   }
 
 }

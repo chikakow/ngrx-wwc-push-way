@@ -15,7 +15,10 @@ import { UserEffects } from './store/effects/user/user.effects';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { EditAdvanceStudentsComponent } from './components/edit-advance-students/edit-advance-students.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
-import { MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,12 @@ import { MatDialogModule} from '@angular/material/dialog';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
