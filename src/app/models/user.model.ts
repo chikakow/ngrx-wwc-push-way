@@ -1,5 +1,6 @@
 
 export class User {
+    id: number;
     joinedOn: Date;
     isStudent: boolean;
     isAdvanceStudent: boolean;

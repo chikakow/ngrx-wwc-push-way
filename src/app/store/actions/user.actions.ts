@@ -11,3 +11,8 @@ export const addStudent = createAction(
   props<{ student: User}>()
 )
 
+export const editAdvance = createAction(
+  '[Edit Advance Page] Edit Advance',
+  props<{ student: User, nextIndex: number}>()
+)
+

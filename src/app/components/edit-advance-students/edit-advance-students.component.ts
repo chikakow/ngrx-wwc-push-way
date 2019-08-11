@@ -4,7 +4,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
-import { UserReducer, UserSelectors } from 'src/app/store';
+import { UserReducer, UserSelectors, UserActions } from 'src/app/store';
 
 @Component({
   selector: 'app-edit-advance-students',
@@ -18,45 +18,30 @@ export class EditAdvanceStudentsComponent implements OnInit {
 
 
   constructor(private store: Store<UserReducer.State>) {
-  
+
     this.studentUsers$ = this.store.pipe(select(UserSelectors.selectRegularStudents));
     this.advanceStudents$ = this.store.pipe(select(UserSelectors.selectAdvanceStudents));
   }
 
   ngOnInit() {
-  //      this.store.pipe(select(UserSelectors.selectRegularStudents)).subscribe(s => this.todo = s)
-  // this.store.pipe(select(UserSelectors.selectAdvanceStudents)).subscribe(s => this.done = s)
+  
   }
 
-  todo = [
-  ];
-
-  done = [
-];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+      // transferArrayItem(event.previousContainer.data,
+      //                   event.container.data,
+      //                   event.previousIndex,
+      //                   event.currentIndex);
+      const target: User = event.previousContainer.data[event.previousIndex] as any;
+      this.store.dispatch(UserActions.editAdvance({student: target, nextIndex: event.currentIndex}));
     }
   }
 
-  // drop(event: CdkDragDrop<string[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     // we don't care about sorting
-  //     // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     // transferArrayItem(event.previousContainer.data,
-  //     //   event.container.data,
-  //     //   event.previousIndex,
-  //     //   event.currentIndex);
-  //     console.log('student', event.previousContainer.data);
-  //   }
-  // }
+
 
   isStudent(user: User): string {
     return user.isStudent ? user.isAdvanceStudent ? 'Advance Student' : 'Student' : 'Regular User';

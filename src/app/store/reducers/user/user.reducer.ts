@@ -37,13 +37,22 @@ export const reducer = createReducer(
     loading: false,
     loaded: false
   })),
-  on(UserActions.addStudent, (state, {student}) => ({
+  on(UserActions.addStudent, (state, { student }) => ({
     ...state,
     users: [student, ...state.users]
-  }))
-  )
+  })),
+  on(UserActions.editAdvance, (state, { student, nextIndex }) => {
+    const s: User = {...student, isAdvanceStudent: !student.isAdvanceStudent}
+    const removed = state.users.filter(u => u.id !== student.id);
+     
+    return {
+      ...state,
+      users: [s, ...removed]
+    }
+  })
+)
 
-  export const getLoaded = (state: State) => state.loaded;
-  export const getLoading = (state: State) => state.loading;
-  export const getLoadError = (state: State) => state.loadError;
-  export const getUsers = (state: State) => state.users;
+export const getLoaded = (state: State) => state.loaded;
+export const getLoading = (state: State) => state.loading;
+export const getLoadError = (state: State) => state.loadError;
+export const getUsers = (state: State) => state.users;
