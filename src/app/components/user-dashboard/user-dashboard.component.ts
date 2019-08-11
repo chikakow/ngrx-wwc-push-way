@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { Store, select } from '@ngrx/store';
-import { UserReducer, UserSelectors, UserActions } from '../../store';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddStudentComponent } from '../add-student/add-student.component';
+import { UserReducer, UserSelectors } from '../../store';
+
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  styleUrls: ['./user-dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDashboardComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class UserDashboardComponent implements OnInit {
     this.advanceStudents$ = this.store.pipe(select(UserSelectors.selectAdvanceStudents));
   }
   ngOnInit() {
-    
+
   }
 
   isStudent(user: User): string {

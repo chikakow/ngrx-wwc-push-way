@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -9,7 +9,8 @@ import { UserReducer, UserSelectors, UserActions } from 'src/app/store';
 @Component({
   selector: 'app-edit-advance-students',
   templateUrl: './edit-advance-students.component.html',
-  styleUrls: ['./edit-advance-students.component.scss']
+  styleUrls: ['./edit-advance-students.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditAdvanceStudentsComponent implements OnInit {
 
@@ -30,7 +31,7 @@ export class EditAdvanceStudentsComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       // transferArrayItem(event.previousContainer.data,
       //                   event.container.data,
